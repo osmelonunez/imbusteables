@@ -1,21 +1,30 @@
-name: Deploy static HTML site to Azure Web App
+name: Deploy Static Site to Azure Static Web App
 
 on:
   push:
     branches:
-      - main
+      - main  # o la rama que desees
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # Paso 1: Checkout del código
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
+      # Paso 2: Desplegar a Azure Static Web App
+      - name: Build and Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
         with:
-          app-name: TU_NOMBRE_DE_WEBAPP
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_STONE_005B92903 }}
+          action: "upload"  # Esta acción indica que estamos subiendo la aplicación
+
+          # Configuración de las rutas de la aplicación (ajusta si es necesario)
+          app_location: "/"  # Ruta donde se encuentran tus archivos HTML, CSS, etc.
+          api_location: ""   # Deja vacío si no usas una API
+          output_location: "/"  # Si no hay un directorio de salida, apunta a la raíz
+
+          github_id_token: ${{ steps.idtoken.outputs.result }}  # Mantén esta autenticación si la estás usando
