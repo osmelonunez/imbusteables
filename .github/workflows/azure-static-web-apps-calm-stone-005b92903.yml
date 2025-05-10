@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - main  # o la rama que desees
+  pull_request:
+    types:
+      - closed  # Este evento activará el job cuando un PR se cierre
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       # Paso 1: Checkout del código
       - name: Checkout code
@@ -20,11 +22,18 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_STONE_005B92903 }}
-          action: "upload"  # Esta acción indica que estamos subiendo la aplicación
+          action: "upload"
+          app_location: "/"
+          api_location: ""
+          output_location: "/"
 
-          # Configuración de las rutas de la aplicación (ajusta si es necesario)
-          app_location: "/"  # Ruta donde se encuentran tus archivos HTML, CSS, etc.
-          api_location: ""   # Deja vacío si no usas una API
-          output_location: "/"  # Si no hay un directorio de salida, apunta a la raíz
-
-          github_id_token: ${{ steps.idtoken.outputs.result }}  # Mantén esta autenticación si la estás usando
+  close-pull-request-job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'  # Solo ejecuta esto cuando se cierre un PR
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request Deployment
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          action: "close"  # Esta acción cierra la implementación asociada al PR
