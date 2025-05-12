@@ -13,7 +13,7 @@
     body {
       margin: 0;
       padding: 40px 20px;
-      background-image: url('desk.png'); /* Reemplaza con tu imagen */
+      background-image: url('app/desk.png'); /* Reemplaza con tu imagen */
       background-size: cover;
       background-position: center;
       min-height: 100vh;
@@ -64,6 +64,25 @@
       font-size: 1.3rem;
       line-height: 1.6;
     }
+
+    .volver-btn {
+      margin-top: 40px;
+      padding: 10px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #00ffff;
+      box-shadow: 0 0 10px #00ffff;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      animation: fadeIn 1.6s ease-out;
+    }
+
+    .volver-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -78,5 +97,8 @@
     <li>Cuando se compra el armamento hay que compartir el resto en partes iguales.</li>
     <li>Cuando hay 4 en cola hay que caer en zonas calientes.</li>
   </ul>
+
+  <!-- Botón para regresar a la página anterior -->
+  <button class="volver-btn" onclick="history.back()">← Volver</button>
 </body>
 </html>
