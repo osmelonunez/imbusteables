@@ -1,51 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Los Imbusteables - Reglas de Call of Duty</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #00ffcc;
-            text-align: center;
-            font-size: 3em;
-            margin-top: 40px;
-        }
-        h2 {
-            color: #ffffff;
-            text-align: center;
-            font-size: 2em;
-            margin-top: 20px;
-        }
-        ul {
-            list-style-type: square;
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 0;
-        }
-        li {
-            margin: 15px 0;
-            font-size: 1.2em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turbeo PRO</title>
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 0 0 0;
+      background-image: url('app/desk.png'); /* Reemplaza con tu imagen */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    h1 {
+      font-size: 4rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 20px #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    nav {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+      animation: fadeIn 1.4s ease-out;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0%;
+      height: 2px;
+      background: #00ffff;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    nav a:hover {
+      color: #00ffff;
+      text-shadow: 0 0 5px #00ffff;
+    }
+  </style>
 </head>
 <body>
-    <h1>Los Imbusteables</h1>
-    <h2>Reglas</h2>
-    <ul>
-        <li>El que está en cola no puede jugar solo.</li>
-        <li>No se puede estar muteado y en cola.</li>
-        <li>La ley de Fidel.</li>
-        <li>No se puede dichabar el gulag.</li>
-        <li>Se compra con F R.</li>
-        <li>Cuando se compra el armamento hay que compartir el resto en partes iguales.</li>
-        <li>Cuando hay 4 en cola hay que caer en zonas calientes .</li>
-    </ul>
+  <h1>Turbeo PRO</h1>
+  <nav>
+    <a href="app/rules.html" target="_blank">Reglas Duty</a>
+    <a href="frases.html">Frases</a>
+    <a href="hechos.html">Hechos</a>
+    <a href="estadisticas-duty.html">Estadísticas Duty</a>
+    <a href="estadisticas-dota.html">Estadísticas Dota</a>
+  </nav>
 </body>
 </html>
